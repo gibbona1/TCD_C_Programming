@@ -1,0 +1,85 @@
+\documentclass[a4paper]{article}
+% Packages
+\usepackage{amssymb,amsmath,theorem, tabu}
+\usepackage{fullpage}
+\usepackage{xcolor,color, colortbl}
+\usepackage{enumerate}
+\usepackage{lmodern}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing}
+\tikzset{snake it/.style={decorate, decoration=snake}}
+\usepackage{tkz-euclide}
+\usepackage{hhline}
+\usepackage[makeroom]{cancel}
+% Problem and solution environments
+\newtheorem{prob}{\large{\large{Problem}}}
+\renewcommand{\theprob}{\arabic{prob}:}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\newenvironment{sol}{\noindent{\large{\bf Solution:}}}{\hfill\ensuremath{\square}}
+
+% Some abbreviations
+\def\bN{\mathbb N}
+\def\bR{\mathbb R}
+\def\bQ{\mathbb Q}
+\def\bZ{\mathbb Z}
+\def\bC{\mathbb C}
+\def\bH{\mathbb H}
+\def\bP{\mathbb P}
+\def\DMO{\DeclareMathOperator}
+\DMO{\GL}{GL}
+\DMO{\SL}{SL}
+\DMO{\gl}{\mathfrak{gl}}
+\DMO{\ssl}{\mathfrak{sl}}
+\def\rbr#1{\left(#1\right)} %round bracket
+\def\imp{\ensuremath{\implies}}
+\def\nl{\newline}
+\def\bs{\backslash}
+\def\pb{\pagebreak}
+\def\ns{\varnothing}
+\definecolor{redblack}{rgb}{1,0.5,0.5}
+
+\title{MA1126: Set Theory
+ Selected Problems 2}
+\author{Anthony Gibbons, Daniel Devine}
+\date{April 2021}
+
+\begin{document}
+
+\maketitle
+
+\begin{prob} %Problem 1
+\large{ 2018 Assignment 5
+\begin{enumerate}
+    \item Use Zorn's Lemma to prove that for any sets A and B, 
+    $$A<B, A\sim B \ or \ B<A$$
+    \begin{sol}
+    We want a function $f:A\to B$ that is 1-to-1. \\
+    Suppose we have $f:C\to B \ where\  c\subset A$, f 1-to-1.\\
+    Let X be the collection of these pairs (C,f)\\
+    i.e. $X=\{(C,f)\;|\; C\subset A, f:C\to B \ 1-to-1\}$\\
+    Given $(C_1,f_1)$ and $(C_2,f_2)$, define\\
+    $(C_1,f_1) \leq (C_2,f_2)$ means\\
+    $C_1\subset C_2 \ and \ f_2=f_1 \ on \ C_1$\\
+    so $f_2$ is an \underline{extension} of $f_1$\\
+    Check that this is a partial order:\\
+    Suppose $\{C_\alpha,f_\alpha\}$ is a partially ordered subset. We want an upper bound in X\\
+    Let $C=\bigcup C_\alpha \ and \ f(x)=f_{\alpha_0}(x)$ if $x\in C_{\alpha_0}$\\
+    This is well defined and 1-to-1 (check)\\
+    So by Zorn's Lemma (Every nonempty partially ordered set - in which each totally ordered subset has an upper bound- contains at least one max element) $\exists$ a maximal element (D,g)
+    \begin{enumerate}[(1)]
+        \item  If $D=A \ and \ g(D)=B, \ then \ A\sim B$
+        \item  If $D=A \ and \ g(D)\neq B, \ then \ A<B$
+        \item  If $D\neq A\  and\  g(D)=B,\  then \ B<A$
+    \end{enumerate}
+    $g:D\to B$ is 1-to-1 and onto so $g^{-1}:B\to D$ exists and is unique.\\
+    If $D\neq A \ and\  g(D)\neq B$\\ 
+    Let $a\in A\bs D,\  b\in B\bs f(D)$\\
+    Let $h:D\cup \{a\}\to f(D)\cup \{b\}$\\
+    $\forall d\in D, d\mapsto g(d), a\mapsto b$\\
+    then $(D\cup \{a\}, h)>(D,g)$ but (D,g) was maximal - contradiction\\
+    So any one of the top three statements is true.
+    \end{sol}
+\end{enumerate}
+}
+\end{prob}
+\end{document}
