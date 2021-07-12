@@ -1,0 +1,96 @@
+\ProvidesPackage{myPreamble}
+
+\usepackage{amssymb,amsmath, amsthm}
+\usepackage{fullpage}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usepackage{graphicx}
+%\usepackage[hidelinks]{hyperref}
+%\usetikzlibrary{matrix, arrows.meta}
+\usetikzlibrary{matrix, arrows.meta, arrows,positioning, shapes.symbols,shapes.callouts,patterns}
+\usetikzlibrary{automata,positioning}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{moreenum}
+\usepackage{hhline}
+%\usepackage{multicol}
+\usepackage[tikz]{multicolrule}
+\usepackage{tkz-euclide}
+\usepackage{multirow}
+\usepackage{thmtools}
+\usepackage{caption}
+\usepackage{imakeidx}
+\usepackage[linktoc=section, hyperindex = true]{hyperref}
+\makeindex[intoc, options= -s example_style.ist]
+%\setlength{\columnsep}{5cm}
+%\setlength{\columnsep}{-5pt}
+\setlength{\columnseprule}{.5pt}
+\SetMCRule{line-style=dashed}
+% Problem and solution environments
+\theoremstyle{definition}
+\renewcommand\rmdefault{bch}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{prob}{Problem}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{ex}{Exercise}
+\numberwithin{equation}{section}
+\renewcommand{\theprob}{\arabic{prob}}
+\newcommand*\tc[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+\newcommand*\tsc[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw, fill=blue!20!white,inner sep=2pt] (char) {#1};}}
+\newcommand*\trc[1]{\tikz[baseline=(char.base)]{
+            \node[shape=rounded rectangle,draw,fill=blue!20!white, inner sep=2pt] (char) {#1};}}
+\NewDocumentCommand{\underarrow}{O{\rightarrow} O{\downarrow} m}{%
+  \underset{\makebox[0pt]{\begin{tabular}{@{}c@{}}\ensuremath{#2}\\[0pt]#3\end{tabular}}}{#1}
+}
+%\newcommand{\tc}[1]{\textcircled{#1}}
+\newcommand{\mymatrix}[1]{\ensuremath{\left.\vphantom{#1}\right.\overset{\xleftrightarrow[\hphantom{#1}]{\text{k}}}{#1}}}
+\newenvironment{sol}{\noindent{\bf Solution:}}{\hfill\ensuremath{\square}}
+\newtheorem*{definition}{Definition}
+\newcommand{\ihat}{\boldsymbol{\hat{\textbf{\i}}}}
+\newcommand{\jhat}{\boldsymbol{\hat{\textbf{\j}}}}
+\newcommand{\khat}{\boldsymbol{\hat{\textbf{\k}}}}
+% Some abbreviations
+\def\bN{\mathbb N}
+\def\bE{\mathbb E}
+\def\bR{\mathbb R}
+\def\bQ{\mathbb Q}
+\def\bZ{\mathbb Z}
+\def\bC{\mathbb C}
+\def\bH{\mathbb H}
+\def\bL{\mathbb L}
+\def\rflec{\mathfrak r}
+\def\DMO{\DeclareMathOperator}
+\DMO{\GL}{GL}
+\DMO{\SL}{SL}
+\DMO{\gl}{\mathfrak{gl}}
+\DMO{\ssl}{\mathfrak{sl}}
+\def\rbr#1{\left(#1\right)} %round bracket
+\def\cbr#1{\left\{#1\right\}} %curly bracket
+\def\sbr#1{\left[#1\right]} %square bracket
+\def\tred#1{\textcolor{red}{#1}} 
+\def\imp{\ensuremath{\implies}}
+\def\eps{\varepsilon}
+\def\ns{\varnothing}
+\def\bs{\backslash}
+\def\ppd{\mathcal{P}}
+\def\tens{\mathcal{L}}
+\def\altt{\mathcal{A}}
+\def\ts{\mathcal{T}}
+\def\dform{\tilde\phi}
+\def\Dform{\tilde\psi}
+\def\eqsign{=}
+\def\limitarrow#1{%
+\begin{tikzpicture}
+\draw[<-] (0,1.5) to (0,0.25);
+\node at (0,0) {#1};
+\draw[<-] (0,-1.5) to (0,-0.25);
+\end{tikzpicture}}
+
+\RequirePackage{silence}
+\WarningFilter{remreset}{The remreset package}
